@@ -18,8 +18,9 @@ class OrderService(
 ) {
 
     fun placeOrder(placeOrderRequest: PlaceOrderRequest): OrderOut {
-        val order = orderRepository.save(converter.map(placeOrderRequest))
-        return converter.map(order)
+        val orderToSave = converter.map(placeOrderRequest)
+        val savedOrder = orderRepository.save(orderToSave)
+        return converter.map(savedOrder)
     }
 
     fun editOrder(id: Long, editOrderRequest: EditOrderRequest) {
@@ -34,9 +35,7 @@ class OrderService(
     }
 
     fun delete(id: Long) {
-        val order = orderRepository.findById(id)
-                .orElseThrow { error("Fant ikke Order med id = $id") }
-        orderRepository.delete(order);
+        orderRepository.deleteById(id);
     }
 
     fun findByFilter(filter: String?): List<OrderOut> {
@@ -47,8 +46,6 @@ class OrderService(
         }
                 .map { converter.map(it) }
     }
-
-//    }
 
     private fun anyFieldContains(filter: String): Specification<Order> {
         val filterString = "%${filter}%"

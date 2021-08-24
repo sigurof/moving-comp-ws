@@ -24,17 +24,4 @@ data class Order(
         var serviceType: ServiceType,
         @Column(name = "dato")
         var date: LocalDate
-) {
-    constructor(
-            name: String,
-            phone: String,
-            email: String,
-            serviceType: ServiceType,
-            date: LocalDate
-    ) : this(id = null,
-            name = name,
-            phone = phone,
-            email = email,
-            serviceType = serviceType,
-            date = date)
-}
+)

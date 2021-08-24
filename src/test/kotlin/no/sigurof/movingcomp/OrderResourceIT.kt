@@ -26,7 +26,7 @@ import javax.transaction.Transactional
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Transactional
-class MovingCompApplicationTests(
+class OrderResourceIT(
         @Autowired val testRestTemplate: TestRestTemplate,
         @Autowired val orderRepository: OrderRepository,
         @Autowired val entityManager: EntityManager,

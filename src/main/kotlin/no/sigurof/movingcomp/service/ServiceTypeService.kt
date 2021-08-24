@@ -1,19 +1,17 @@
 package no.sigurof.movingcomp.service
 
-import no.sigurof.movingcomp.domain.servicetypes.*
+import no.sigurof.movingcomp.domain.servicetypes.CleaningService
+import no.sigurof.movingcomp.domain.servicetypes.MovingService
+import no.sigurof.movingcomp.domain.servicetypes.PackingService
+import no.sigurof.movingcomp.domain.servicetypes.ServiceType
 import no.sigurof.movingcomp.dto.CleaningServiceDto
 import no.sigurof.movingcomp.dto.MovingServiceDto
 import no.sigurof.movingcomp.dto.PackingServiceDto
 import no.sigurof.movingcomp.dto.ServiceTypeDto
-import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
 @Service
-class ServiceTypeService(
-        @Autowired private val cleaningServiceRepository: CleaningServiceRepository,
-        @Autowired private val packingServiceRepository: PackingServiceRepository,
-        @Autowired private val movingServiceRepository: MovingServiceRepository,
-) {
+class ServiceTypeService() {
     fun edit(serviceType: ServiceType, data: ServiceTypeDto): ServiceType {
         return when (data) {
             is CleaningServiceDto -> editCleaning(serviceType, data)

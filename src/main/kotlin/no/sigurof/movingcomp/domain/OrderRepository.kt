@@ -7,6 +7,4 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor
 import org.springframework.stereotype.Repository
 
 @Repository
-interface OrderRepository : JpaRepository<Order, Long>, JpaSpecificationExecutor<Order> {
-
-}
+interface OrderRepository : JpaRepository<Order, Long>, JpaSpecificationExecutor<Order>
